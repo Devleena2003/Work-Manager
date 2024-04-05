@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { connectdb } from "@/app/helper/db";
 
 export async function GET(request, { params }) {
-  const { userId } = params;
+  const { userid } = params;
 
   try {
     console.log("Connecting to database...");
@@ -11,7 +11,7 @@ export async function GET(request, { params }) {
     console.log("Connected to database.");
 
     const tasks = await Task.find({
-      userId: userId,
+      userId: userid,
     });
 
     console.log("Tasks found:", tasks);
