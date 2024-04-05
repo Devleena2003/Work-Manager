@@ -5,12 +5,12 @@ import Image from "next/image";
 import { addTask } from "../services/taskServices";
 import { toast } from "react-toastify";
 
-const metadata = {
-  title: "Work Manager-Add Task",
-};
+// const metadata = {
+//   title: "Work Manager-Add Task",
+// };
 
 const AddTask = () => {
-  document.title = metadata.title;
+  // document.title = metadata.title;
   const [task, setTask] = useState({
     title: " ",
     content: "",
