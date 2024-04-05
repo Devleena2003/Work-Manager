@@ -2,12 +2,14 @@ import { User } from "@/app/models/user";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { connectdb } from "@/app/helper/db";
 
 export async function POST(request) {
   const JWT_KEY = "asdfghjkl";
   const { email, password } = await request.json();
   try {
     //1. match email
+    await connectdb();
     const user = await User.findOne({ email: email });
     if (user == null) {
       throw new Error("user not found");

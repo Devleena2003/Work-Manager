@@ -1,9 +1,11 @@
 import { Task } from "@/app/models/tasks";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import { connectdb } from "@/app/helper/db";
 
 export async function GET(request) {
   try {
+    await connectdb();
     const tasks = await Task.find();
     return NextResponse.json(tasks);
   } catch (err) {
@@ -23,13 +25,14 @@ export async function POST(request) {
   console.log(data._id);
 
   try {
+    await connectdb();
     const task = new Task({
       title,
       content,
       userId: data._id,
       status,
     });
-
+    await connectdb();
     const createdTask = await task.save();
     return NextResponse.json(createdTask, {
       status: 201,

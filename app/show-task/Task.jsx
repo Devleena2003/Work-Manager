@@ -28,7 +28,7 @@ const Task = ({ task, deleteTaskParent }) => {
         <p className="font-normal">{task.content}</p>
         <div className="flex justify-between mt-3">
           <p className="text-right">
-            <b>Author: {user.name}</b>
+            <b>Author: {user?.name}</b>
           </p>
           <p className="text-left">
             <b> Status: {task.status}</b>

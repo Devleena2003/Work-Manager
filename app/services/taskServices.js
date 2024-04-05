@@ -8,13 +8,13 @@ export async function addTask(task) {
 
 export async function getTasksOfUser(userId) {
   const result = await httpsAxios
-    .get(`/api/users/${userId}/tasks`)
+    .get(`/api/user/${userId}/tasks`)
     .then((response) => response.data);
   return result;
 }
 export async function deleteTask(taskId) {
   const result = await httpsAxios
-    .delete(`/api/tasks/${userId}/tasks`)
+    .delete(`/api/tasks/${taskId}`)
     .then((response) => response.data);
   return result;
 }

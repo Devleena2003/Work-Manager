@@ -3,13 +3,12 @@ import { User } from "@/app/models/user";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
-connectdb();
-
 const bcrypt_salt = "10";
 
 export async function GET(request) {
   let users = [];
   try {
+    await connectdb();
     users = await User.find().select("-password");
   } catch (err) {
     console.log(err);
@@ -37,7 +36,9 @@ export async function POST(request) {
 
   try {
     user.password = bcrypt.hashSync(user.password, parseInt(bcrypt_salt));
+
     console.log(user);
+    await connectdb();
     const createdUser = await user.save();
     const response = NextResponse.json(user, {
       status: 201,

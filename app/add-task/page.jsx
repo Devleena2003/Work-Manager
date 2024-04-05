@@ -14,7 +14,7 @@ const AddTask = () => {
   const [task, setTask] = useState({
     title: " ",
     content: "",
-    status: "",
+    status: "none",
     userId: "65f1bc7f4156c428dda90649",
   });
 
@@ -31,7 +31,7 @@ const AddTask = () => {
       setTask({
         title: " ",
         content: "",
-        status: "",
+        status: "none",
       });
     } catch (err) {
       console.log(err);
@@ -108,8 +108,8 @@ const AddTask = () => {
               value={task.status}
             >
               <option value="">Select Status</option>
-              <option value="Pending">Pending</option>
-              <option value="Completed">Completed</option>
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
             </select>
           </div>
 
