@@ -4,11 +4,13 @@ import signupSvg from "../assets/signup.svg";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { signUp } from "../services/userService";
+import { useRouter } from "next/navigation";
 
 const metadata = {
   title: "Work Manager-Sign Up",
 };
 const Signup = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -43,6 +45,7 @@ const Signup = () => {
       toast.success("User is registered", {
         position: "top-center",
       });
+      router.push("/login");
     } catch (err) {
       console.log(err);
       toast.error("Sign Up Error", {
